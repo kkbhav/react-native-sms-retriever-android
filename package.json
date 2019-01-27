@@ -1,0 +1,43 @@
+{
+  "name": "react-native-android-sms-retriever",
+  "version": "0.0.1",
+  "description": "Android SMS Retriever API implementation in react-native",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "react-native",
+    "sms",
+    "retriever",
+    "retrieve",
+    "android"
+  ],
+  "author": "Bhavesh Khandelwal",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kkbhav/react-native-android-sms-retriever.git"
+  },
+  "homepage": "https://github.com/kkbhav/react-native-android-sms-retriever#readme",
+  "peerDependencies": {
+    "react-native": "^0.55.4"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.0.0",
+    "@babel/preset-flow": "^7.0.0",
+    "babel-eslint": "10.0.1",
+    "babel-jest": "23.6.0",
+    "eslint": "5.7.0",
+    "eslint-config-airbnb": "^17.1.0",
+    "eslint-plugin-babel": "^5.2.0",
+    "eslint-plugin-import": "^2.14.0",
+    "eslint-plugin-import-order-autofix": "^0.8.3",
+    "eslint-plugin-jsx-a11y": "^6.1.1",
+    "eslint-plugin-react": "7.11.1",
+    "eslint-plugin-react-native": "^3.2.1",
+    "flow-bin": "^0.78.0",
+    "react": "16.6.1",
+    "react-native": "0.57.7"
+  }
+}
