@@ -33,9 +33,7 @@
 import RNSmsRetrieverAndroid from 'react-native-sms-retriever-android';
 
 /*
- * Returns app signature, which is used to identify the SMS sent from your server
- * SMS body Example: "<#> Your ExampleApp code is: 123ABC78 FA+9qCX9VSu"
- * The last part of above example is your app signature
+ * Returns app signature array, which is used to identify the SMS sent from your server
  * callback: (optional) to receive signature array
  */
 const signatureArray = await RNSmsRetrieverAndroid.getAppSignature(callback);
@@ -57,4 +55,5 @@ subscription.remove();
 2. Subscription will be valid for one time only. To listen for next sms, subscribe again
 3. Subscription is valid for 5 minutes. After that listener will receive timeout error
 4. Example SMS: "<#> Your ExampleApp code is: 123ABC78 FA+9qCX9VSu"
+
     **FA+9qCX9VSu** => This is your app signature
