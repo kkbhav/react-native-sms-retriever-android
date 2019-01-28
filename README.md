@@ -42,9 +42,8 @@ const signatureArray = await RNSmsRetrieverAndroid.getAppSignature(callback);
 
 /*
  * Subscribe to listen for incoming SMS
- * listener: ({ message: string, error: string, code: number})
+ * listener: ({ message: string, error: string, code: number}) => void
  * callback: (optional) to check if subscription was successful or not
- * Note: This will timeout in 5 minutes, so call it when you are expecting a SMS
  */
 const subscription = await RNSmsRetrieverAndroid.retrieveSMS(listener, callback);
 
@@ -55,3 +54,7 @@ subscription.remove();
 ## Note
 
 1. App signature will vary for debug and release builds
+2. Subscription will be valid for one time only. To listen for next sms, subscribe again
+3. Subscription is valid for 5 minutes. After that listener will receive timeout error
+4. Example SMS: "<#> Your ExampleApp code is: 123ABC78 FA+9qCX9VSu"
+    **FA+9qCX9VSu** => This is your app signature
