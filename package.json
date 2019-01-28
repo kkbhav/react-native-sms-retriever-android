@@ -1,5 +1,5 @@
 {
-  "name": "react-native-android-sms-retriever",
+  "name": "react-native-sms-retriever-android",
   "version": "0.0.1",
   "description": "Android SMS Retriever API implementation in react-native",
   "main": "index.js",
@@ -17,9 +17,9 @@
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/kkbhav/react-native-android-sms-retriever.git"
+    "url": "git+https://github.com/kkbhav/react-native-sms-retriever-android.git"
   },
-  "homepage": "https://github.com/kkbhav/react-native-android-sms-retriever#readme",
+  "homepage": "https://github.com/kkbhav/react-native-sms-retriever-android#readme",
   "peerDependencies": {
     "react-native": "^0.55.4"
   },

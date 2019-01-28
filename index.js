@@ -1,8 +1,8 @@
 // @flow
 import { NativeModules, Platform, DeviceEventEmitter } from 'react-native';
 
-const { RNAndroidSmsRetriever } = NativeModules;
-const SMS_RECEIVED_EVENT = 'RNAndroidSmsRetriever_SMS_RETRIEVE_EVENT';
+const { RNSmsRetrieverAndroid } = NativeModules;
+const SMS_RECEIVED_EVENT = 'RNSmsRetrieverAndroid_SMS_RETRIEVE_EVENT';
 
 const handleResponse = (callback?: (error: ?Error, data?: any) => void, err: ?Error, data?: any) => {
   if (err) {
@@ -19,7 +19,7 @@ const retriever = {
   async getAppSignature(callback?: (error: ?Error, signatures?: Array<string>) => void) {
     try {
       if (Platform.OS === 'android') {
-        const signatures = await RNAndroidSmsRetriever.getAppSignature();
+        const signatures = await RNSmsRetrieverAndroid.getAppSignature();
         return handleResponse(callback, null, signatures);
       }
       return handleResponse(callback, null, []);
@@ -34,7 +34,7 @@ const retriever = {
         if (!listener || typeof listener !== 'function') {
           throw new Error('Invalid arguments received');
         }
-        await RNAndroidSmsRetriever.retrieveSMS();
+        await RNSmsRetrieverAndroid.retrieveSMS();
         const subscription = DeviceEventEmitter.addListener(SMS_RECEIVED_EVENT, listener);
         return handleResponse(callback, null, subscription);
       }

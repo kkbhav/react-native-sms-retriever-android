@@ -29,14 +29,14 @@ import com.google.android.gms.tasks.Task;
 
 import java.util.ArrayList;
 
-public class RNAndroidSmsRetrieverModule extends ReactContextBaseJavaModule {
+public class RNSmsRetrieverAndroidModule extends ReactContextBaseJavaModule {
 
   private final ReactApplicationContext reactContext;
   private Handler handler;
-  private String SMS_RETRIEVE_EVENT_NAME = "RNAndroidSmsRetriever_SMS_RETRIEVE_EVENT";
+  private String SMS_RETRIEVE_EVENT_NAME = "RNSmsRetrieverAndroid_SMS_RETRIEVE_EVENT";
   private IntentFilter intentFilter = new IntentFilter("com.google.android.gms.auth.api.phone.SMS_RETRIEVED");
 
-  public RNAndroidSmsRetrieverModule(ReactApplicationContext reactContext) {
+  public RNSmsRetrieverAndroidModule(ReactApplicationContext reactContext) {
     super(reactContext);
     this.reactContext = reactContext;
     this.handler = new Handler(reactContext.getMainLooper());
@@ -44,7 +44,7 @@ public class RNAndroidSmsRetrieverModule extends ReactContextBaseJavaModule {
 
   @Override
   public String getName() {
-    return "RNAndroidSmsRetriever";
+    return "RNSmsRetrieverAndroid";
   }
 
   @ReactMethod
@@ -89,7 +89,7 @@ public class RNAndroidSmsRetrieverModule extends ReactContextBaseJavaModule {
           task.addOnSuccessListener(new OnSuccessListener<Void>() {
             @Override
             public void onSuccess(Void aVoid) {
-              Log.d("RNAndroidSmsRetriever", "successfully subscribed");
+              Log.d("RNSmsRetrieverAndroid", "successfully subscribed");
               getReactApplicationContext().registerReceiver(receiver, intentFilter);
               handler.postDelayed(runnable, 1000 * 60 * 6);
               promise.resolve(true);
@@ -99,8 +99,8 @@ public class RNAndroidSmsRetrieverModule extends ReactContextBaseJavaModule {
           task.addOnFailureListener(new OnFailureListener() {
             @Override
             public void onFailure(@NonNull Exception e) {
-              Log.d("RNAndroidSmsRetriever", "failed to add listener");
-              Log.d("RNAndroidSmsRetriever", e.getMessage());
+              Log.d("RNSmsRetrieverAndroid", "failed to add listener");
+              Log.d("RNSmsRetrieverAndroid", e.getMessage());
               getReactApplicationContext().unregisterReceiver(receiver);
               promise.reject(e);
             }
@@ -137,7 +137,7 @@ public class RNAndroidSmsRetrieverModule extends ReactContextBaseJavaModule {
             handler.removeCallbacks(runnable);
             // Get SMS message contents
             String message = (String) extras.get(SmsRetriever.EXTRA_SMS_MESSAGE);
-            Log.d("RNAndroidSmsRetriever", "message received" + message);
+            Log.d("RNSmsRetrieverAndroid", "message received" + message);
 
             map.putString("message", message);
             map.putString("error", null);
@@ -154,7 +154,7 @@ public class RNAndroidSmsRetrieverModule extends ReactContextBaseJavaModule {
             break;
           case CommonStatusCodes.TIMEOUT:
             handler.removeCallbacks(runnable);
-            Log.d("RNAndroidSmsRetriever", "ETIMEOUT");
+            Log.d("RNSmsRetrieverAndroid", "ETIMEOUT");
             map.putString("message", null);
             map.putString("error", "ETIMEOUT");
             map.putInt("code", 408);
