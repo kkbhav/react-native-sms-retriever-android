@@ -1,5 +1,5 @@
 
-package com.reactlibrary;
+package com.bhavesh.smsretriever;
 
 import android.content.BroadcastReceiver;
 import android.content.Context;
